@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+// 내일은 상단바랑 햄버거 메뉴(drawer, 당겨오는 형식으로 만들기)
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -24,14 +26,31 @@ class _MainState extends State<Main> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,//debug 띠 안보이게 해줌
       title: 'chat used firebase',
       theme: ThemeData(primaryColor: Colors.white),
       home: DefaultTabController(
           length: 3,
           child: Scaffold(
+
             appBar: AppBar(
               title: Text('fire chat App'),
+              backgroundColor: Colors.transparent,
+              elevation: 0,
+              leading: IconButton(
+                icon: Icon(Icons.menu),
+                onPressed: () {},
+                color: Colors.black,
+              ),
+              actions: <Widget>[
+                IconButton(
+                  icon: Icon(Icons.search),
+                  onPressed: () {},
+                  color: Colors.black,
+                )
+              ],
             ),
+
             body: TabBarView(
               children: [
                 Text('홈 스크린'),
@@ -39,6 +58,7 @@ class _MainState extends State<Main> {
                 Text('마이 스크린'),
               ],
             ),
+
             bottomNavigationBar: TabBar(tabs: [
               Tab(
                 icon: Icon(Icons.home),
