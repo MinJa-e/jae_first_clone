@@ -10,6 +10,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Clone',
+      theme: ThemeData(
+        primarySwatch: Colors.blue,
+        visualDensity: VisualDensity.adaptivePlatformDensity,
+      ),
       home: Main(),
     );
   }
@@ -22,33 +26,34 @@ class Main extends StatefulWidget {
 }
 
 // DefaultTabController 사용한 하단바
+
+/*
 class _MainState extends State<Main> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,//debug 띠 안보이게 해줌
       title: 'chat used firebase',
-      theme: ThemeData(primaryColor: Colors.white),
       home: DefaultTabController(
           length: 3,
           child: Scaffold(
+            // extendBodyBehindAppBar: false,
+            // extendBodyBehindAppBar가 true면 body 영역이 화면 전체를 채움
 
             appBar: AppBar(
+              backgroundColor: Colors.yellow,
               title: Text('fire chat App'),
-              backgroundColor: Colors.transparent,
+              centerTitle: true,
               elevation: 0,
-              leading: IconButton(
-                icon: Icon(Icons.menu),
-                onPressed: () {},
-                color: Colors.black,
-              ),
               actions: <Widget>[
                 IconButton(
                   icon: Icon(Icons.search),
                   onPressed: () {},
-                  color: Colors.black,
                 )
               ],
+            ),
+            drawer: Drawer(
+
             ),
 
             body: TabBarView(
@@ -77,34 +82,39 @@ class _MainState extends State<Main> {
     );
   }
 }
+*/
 
 // BottomNavigationBar 사용한 하단바
 
-/*
+
 class _MainState extends State<Main> {
   @override
   Widget build(BuildContext context) {
-    int screenIndex = 0;
-    List<Widget> screenList = [Text('홈스크린'), Text('채팅 스크린'), Text('마이 스크린')];
+    int bottomTab = 0;
+    List tabBody = [Text('page1'), Text('page2'), Text('page3')];
 
     return Scaffold(
         appBar: AppBar(
           title: Text('fire chat App'),
         ),
-        body: screenList[screenIndex],
+        body: Center(
+          child: tabBody[bottomTab], // 페이지와 연결
+        ),
         bottomNavigationBar: BottomNavigationBar(
-          currentIndex: screenIndex,
+          currentIndex: bottomTab,
           items: [
             BottomNavigationBarItem(icon: Icon(Icons.home), label: 'home'),
             BottomNavigationBarItem(icon: Icon(Icons.chat), label: 'chat'),
             BottomNavigationBarItem(icon: Icon(Icons.people), label: 'my')
           ],
-          onTap: (value) {
-            setState(() { //상태 갱신이 되지 않으면 동작을 하지 않음
-              screenIndex = value;
-            });
-          },
+          onTap: _onItemTapped
         ));
   }
+  void _onItemTapped(int index) {
+    // state 갱신
+    setState(() {
+      int bottomTab = index; // index는 item 순서로 0, 1, 2로 구성
+    });
+  }
 }
-*/
+
