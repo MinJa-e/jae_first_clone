@@ -10,10 +10,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Clone',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
       home: Main(),
     );
   }
@@ -27,7 +23,6 @@ class Main extends StatefulWidget {
 
 // DefaultTabController 사용한 하단바
 
-/*
 class _MainState extends State<Main> {
   @override
   Widget build(BuildContext context) {
@@ -35,16 +30,16 @@ class _MainState extends State<Main> {
       debugShowCheckedModeBanner: false,//debug 띠 안보이게 해줌
       title: 'chat used firebase',
       home: DefaultTabController(
-          length: 3,
+          length: 4,
           child: Scaffold(
             // extendBodyBehindAppBar: false,
             // extendBodyBehindAppBar가 true면 body 영역이 화면 전체를 채움
 
             appBar: AppBar(
-              backgroundColor: Colors.yellow,
-              title: Text('fire chat App'),
+              title: Text(' '),
               centerTitle: true,
               elevation: 0,
+              backgroundColor: Colors.transparent.withOpacity(1),
               actions: <Widget>[
                 IconButton(
                   icon: Icon(Icons.search),
@@ -58,34 +53,79 @@ class _MainState extends State<Main> {
 
             body: TabBarView(
               children: [
-                Text('홈 스크린'),
-                Text('채팅 스크린'),
-                Text('마이 스크린'),
+                Container(
+                  color: Colors.black,
+                ),
+                Container(
+                  color: Colors.red,
+                ),
+                Container(
+                  color: Colors.blue,
+                ),
+                Container(
+                  color: Colors.yellow,
+                ),
               ],
             ),
 
-            bottomNavigationBar: TabBar(tabs: [
-              Tab(
-                icon: Icon(Icons.home),
-                text: 'home',
-              ),
-              Tab(
-                icon: Icon(Icons.chat),
-                text: 'chat',
-              ),
-              Tab(
-                icon: Icon(Icons.people),
-                text: 'my',
-              )
-            ]),
+            bottomNavigationBar: bottomBar(),
+
           )),
     );
   }
 }
-*/
+
+class bottomBar extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.transparent, //색상
+      child: Container(
+        height: 70,
+        padding: EdgeInsets.only(bottom: 10, top: 5),
+        child: TabBar(
+          indicatorSize: TabBarIndicatorSize.label,
+          indicatorColor: Colors.black,
+          indicatorWeight: 4,
+          labelColor: Colors.black,
+          unselectedLabelColor: Colors.black38,
+          tabs: [
+            Tab(
+              icon: Icon(
+                Icons.home,
+                size: 20,
+              ),
+              text: 'Home',
+            ),
+            Tab(
+              icon: Icon(Icons.sort_by_alpha_rounded, size: 20),
+              text: 'Vocab',
+            ),
+            Tab(
+              icon: Icon(
+                Icons.library_books,
+                size: 20,
+              ),
+              text: 'Library',
+            ),
+            Tab(
+              icon: Icon(
+                Icons.person,
+                size: 20,
+              ),
+              text: 'MyPage',
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}
+
 
 // BottomNavigationBar 사용한 하단바
 
+/*
 
 class _MainState extends State<Main> {
   @override
@@ -117,4 +157,5 @@ class _MainState extends State<Main> {
     });
   }
 }
+*/
 
