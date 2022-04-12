@@ -30,7 +30,7 @@ class _MainState extends State<Main> {
       debugShowCheckedModeBanner: false,//debug 띠 안보이게 해줌
       title: 'chat used firebase',
       home: DefaultTabController(
-          length: 4,
+          length: 2,
           child: Scaffold(
             // extendBodyBehindAppBar: false,
             // extendBodyBehindAppBar가 true면 body 영역이 화면 전체를 채움
@@ -58,12 +58,6 @@ class _MainState extends State<Main> {
                 ),
                 Container(
                   color: Colors.red,
-                ),
-                Container(
-                  color: Colors.blue,
-                ),
-                Container(
-                  color: Colors.yellow,
                 ),
               ],
             ),
@@ -99,22 +93,8 @@ class bottomBar extends StatelessWidget {
             ),
             Tab(
               icon: Icon(Icons.sort_by_alpha_rounded, size: 20),
-              text: 'Vocab',
+              text: 'Sub',
             ),
-            Tab(
-              icon: Icon(
-                Icons.library_books,
-                size: 20,
-              ),
-              text: 'Library',
-            ),
-            Tab(
-              icon: Icon(
-                Icons.person,
-                size: 20,
-              ),
-              text: 'MyPage',
-            )
           ],
         ),
       ),
